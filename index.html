@@ -1,155 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chu Yan Kiat - Personal Website</title>
-  <style>
-    /* Reset some default styles */
-    body, h1, h2, h3, p {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Global Styles */
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background-color: gray;
-    }
-
-    /* Header Styles */
-    header {
-      background-color: black; /* Dark red */
-      color: white;
-      padding: 1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-    }
-
-    nav ul li {
-      margin-right: 20px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-    }
-
-    /* Hero Section Styles */
-    #hero {
-      background: transparent;
-      background-color: white;
-      color: black;
-      text-align: center;
-      padding: 50px 0;  
-    }
-
-    /* About Section Styles */
-    #about {
-        border: 3px ;
-        border-color: black;
-        border-style:solid;
-      background-color: #ffffff; /* White background */
-      padding: 30px;
-      color: #333333; /* Dark gray text color */
-      text-align: center;
-    }
-
-    /* Skills Section Styles */
-    #skills {
-        border: 3px;
-        border-style: solid;
-      background-color: #ffffff; /* White background */
-      padding: 30px;
-      color: #333333; /* Dark gray text color */
-      text-align: center;
-      border-top: 5px;
-    }
-
-    .skill {
-      display: inline-block;
-      margin: 10px;
-      padding: 5px 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-
-    }
-
-    /* Contact Section Styles */
-    #contact {
-      background-color: #ffffff; /* White background */
-      color: #333333; /* Dark gray text color */
-      padding: 30px;
-      text-align: center;
-    }
-
-    /* Footer Styles */
-    footer {
-      background-color: black; /* Dark red */
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    /* Travel Styles */
-    #travel {
-        background-color: white;
-        text-align: center;
-        padding:30px;
-    }
-  </style>
-  <!-- Link to the Comic Sans MS font -->
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto Themed Game</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <section id="hero">
-    <div class="hero-content">
-      <img src="https://media.licdn.com/dms/image/D5603AQFoIF1bvkpN8Q/profile-displayphoto-shrink_400_400/0/1693346967395?e=1698883200&v=beta&t=Eh2fmH0Xc6tU-PkE3lv2NAid6BXOPKWHknhLLhUySZw" alt="Chu Yan Kiat" style="border-radius: 50%; max-width: 150px;">
-      <h1>Chu Yan Kiat</h1>
-      <p>Live, Laugh, Love.</p>
+    <div id="app" class="container text-center">
+        <h1 class="my-4">Naruto Memory Game</h1>
+        <button id="play-music">Play Music</button>
+        <audio id ="background-music" loop>
+            <source src="song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p class="flip-counter">Flips: {{ flipCount }}</p> <!-- Display flip count -->
+        <div class="game-board">
+            <div v-for="(card, index) in cards" :key="index" class="game-card" @click="flipCard(index)">
+                <img v-if="card.flipped" :src="card.image" class="card-image">
+            </div>
+        </div>
     </div>
-  </section>
-  
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am an Information Systems Undergraduate studying in SMU.</p>
-    <p>Birthdate: 16/10/2001</p>
-    <p>Gender: Male</p>
-  </section>
-  
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill">Python</div>
-    <div class="skill">HTML</div>
-    <div class="skill">PHP</div>
-  </section>
-
-  <section id ="travel">
-    <h2>My Favourite Travel Destination</h2>
-    <br>
-    <iframe width="1280" height="720" src="https://www.youtube.com/embed/NQ6_Sqt_w3Y?si=vrgMn2zZ_Jq7AJD0&autoplay=1&mute=1" allow="autoplay" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>You can reach me at <a href="mailto:yankiat.chu.2022@scis.smu.edu.sg">yankiat.chu.2022@scis.smu.edu.sg</a>.</p>
-  </section>
-  
-  <footer>
-    <p>&copy; 2023 Chu Yan Kiat. All rights reserved.</p>
-  </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('play-music').addEventListener('click', function() {
+            var music = document.getElementById('background-music');
+            if (music) {
+                music.play();
+            }
+        });
+    });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

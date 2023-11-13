@@ -1,0 +1,111 @@
+body {
+    background-image: url('https://moewalls.com/wp-content/uploads/2023/08/cyberpunk-naruto-rainy-street-thumb.jpg'); /* Replace with a Naruto-themed background image */
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    /* Adjust the color and size of the glow as needed */
+}
+
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.game-card {
+    background-color: #e74c3c;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+.card-image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+.flip-counter {
+    font-size: 1.5rem;
+    color: #ffeb3b;
+    text-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b, 0 0 15px #e60073, 0 0 20px #e60073;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Optional: Add a small animation to draw attention to the counter */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.flip-counter {
+    animation: pulse 2s infinite;
+}
+#play-music {
+    background-color: #ff9800; /* Naruto's iconic orange color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#play-music:hover {
+    background-color: #e65100; /* A darker shade for hover effect */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+#play-music:active {
+    transform: scale(0.95); /* Slightly decrease size when clicked */
+}
